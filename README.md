@@ -71,29 +71,4 @@ The server will start running at `http://127.0.0.1:8000`.
 ### 5. Launch the Frontend
 Simply double-click the **`index.html`** file in the root folder or serve it locally.
 
----
 
-## ☁️ Deployment
-
-### Deployed Demo URLs
-*   **Backend (Render)**: `https://research-paper-assistand-backend.onrender.com/health`
-
-### How to Deploy the Backend (Render)
-1.  Sign in to **Render** with GitHub and create a new **Web Service**.
-2.  Connect this repository.
-3.  Configure:
-    *   **Build Command**: `pip install -r requirements.txt`
-    *   **Start Command**: `uvicorn backend.main:app --host 0.0.0.0 --port $PORT`
-4.  Add environment variable: `GROQ_API_KEY` = `your_key`.
-
-### How to Deploy the Frontend (Vercel)
-1.  Sign in to **Vercel** with GitHub and import this repository.
-2.  Set the **Root Directory** to `.` (the project root, which serves `index.html` as the default landing page).
-3.  Deploy.
-
----
-
-## 🎨 UI Showcase
-
-*   **Theme**: Cyberpunk Dark (glassmorphic sidebar, indigo/purple gradients).
-*   **Chat Features**: Bouncing typing indicators, inline code rendering, page reference badge chips.
