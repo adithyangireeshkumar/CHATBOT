@@ -571,7 +571,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="api-url-input">Backend API URL</label>
-                    <input type="text" class="form-input" id="api-url-input" placeholder="http://127.0.0.1:8000">
+                    <input type="text" class="form-input" id="api-url-input" placeholder="https://research-paper-assistand-backend.onrender.com">
                 </div>
             </div>
         </div>
@@ -623,7 +623,10 @@
     </div>
 
     <script>
-        let apiBase = localStorage.getItem("API_BASE") || "http://127.0.0.1:8000";
+        if (localStorage.getItem("API_BASE") === "http://127.0.0.1:8000" || localStorage.getItem("API_BASE") === "http://localhost:8000" || !localStorage.getItem("API_BASE")) {
+            localStorage.setItem("API_BASE", "https://research-paper-assistand-backend.onrender.com");
+        }
+        let apiBase = localStorage.getItem("API_BASE") || "https://research-paper-assistand-backend.onrender.com";
         let activePaperId = null;
         let paperSummary = "";
         let paperContributions = "";
