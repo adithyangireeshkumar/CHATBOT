@@ -561,13 +561,17 @@
         <!-- Settings (API Key override) -->
         <div class="settings-panel">
             <div class="settings-toggle" onclick="toggleSettings()">
-                <span>⚙️ Settings (Groq API Key)</span>
+                <span>⚙️ Settings</span>
                 <span id="settings-arrow">▶</span>
             </div>
             <div class="settings-content" id="settings-content">
                 <div class="form-group">
-                    <label class="form-label" for="api-key-input">Override API Key</label>
+                    <label class="form-label" for="api-key-input">Override Groq Key</label>
                     <input type="password" class="form-input" id="api-key-input" placeholder="gsk_...">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="api-url-input">Backend API URL</label>
+                    <input type="text" class="form-input" id="api-url-input" placeholder="http://127.0.0.1:8000">
                 </div>
             </div>
         </div>
@@ -619,7 +623,7 @@
     </div>
 
     <script>
-        const API_BASE = "http://127.0.0.1:8000";
+        let apiBase = localStorage.getItem("API_BASE") || "http://127.0.0.1:8000";
         let activePaperId = null;
         let paperSummary = "";
         let paperContributions = "";
@@ -641,8 +645,20 @@
         const chatArea = document.getElementById('chat-area');
         const welcomeScreen = document.getElementById('welcome-screen');
         const apiKeyInput = document.getElementById('api-key-input');
+        const apiUrlInput = document.getElementById('api-url-input');
         const settingsContent = document.getElementById('settings-content');
         const settingsArrow = document.getElementById('settings-arrow');
+
+        // Set API input default
+        apiUrlInput.value = apiBase;
+        apiUrlInput.addEventListener('change', () => {
+            let val = apiUrlInput.value.trim();
+            if (val) {
+                if (val.endsWith('/')) val = val.slice(0, -1);
+                localStorage.setItem("API_BASE", val);
+                apiBase = val;
+            }
+        });
 
         // Toggle Settings
         function toggleSettings() {
@@ -717,7 +733,7 @@
             }
 
             try {
-                const response = await fetch(`${API_BASE}/upload`, {
+                const response = await fetch(`${apiBase}/upload`, {
                     method: 'POST',
                     body: formData
                 });
@@ -819,7 +835,7 @@
             }
 
             try {
-                const response = await fetch(`${API_BASE}/query`, {
+                const response = await fetch(`${apiBase}/query`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
