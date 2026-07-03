@@ -1,0 +1,10 @@
+pymupdf
+faiss-cpu
+groq
+langgraph
+pydantic
+scikit-learn
+langdetect
+fastapi
+uvicorn
+python-multipart
