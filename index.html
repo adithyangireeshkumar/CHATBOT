@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research Paper Assistant</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%2309090b%22/><text x=%2250%25%22 y=%2258%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23ffffff%22 font-family=%22sans-serif%22 font-weight=%22800%22 font-size=%2215%22>RA</text></svg>">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,10 +56,17 @@
             justify-content: space-between;
         }
 
-        .logo {
-            font-size: 18px;
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-text {
+            font-size: 16px;
             font-weight: 600;
             letter-spacing: -0.3px;
+            color: var(--text-main);
         }
 
         /* --- Minimalist Uploader --- */
@@ -489,8 +498,8 @@
             header {
                 margin-bottom: 16px;
             }
-            .logo {
-                font-size: 16px;
+            .logo-text {
+                font-size: 14.5px;
             }
             .upload-section {
                 padding: 30px 16px;
@@ -535,7 +544,13 @@
     <div class="app-container">
         <!-- Header -->
         <header>
-            <div class="logo">Research Assist</div>
+            <div class="logo-container">
+                <svg class="logo-svg" width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="32" height="32" rx="8" fill="#09090b"/>
+                    <text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="15" letter-spacing="-0.5px">RA</text>
+                </svg>
+                <span class="logo-text">Research Assist</span>
+            </div>
             <button class="settings-link" onclick="openSettings()">Configure</button>
         </header>
 
